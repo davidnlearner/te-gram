@@ -53,7 +53,7 @@
         <i class="fas fa-bars" id="fas-fa-bars"></i>
       </button>
       <div class="dropdown-content">
-        <ul>
+        <ul class="nav-dropdown-list">
           <router-link
             tag="li"
             v-bind:to="{ name: 'home' }"
@@ -84,7 +84,7 @@
   </div>
 </template>
 
-<script>
+<script scoped>
 export default {
   data() {
     return {
@@ -225,6 +225,8 @@ export default {
 .dropdown {
   position: relative;
   display: inline-block;
+  justify-self: right;
+  padding-right: 1.5rem;
 }
 
 .dropdown-content {
@@ -248,6 +250,13 @@ export default {
 li {
   list-style: none;
   justify-self: center;
+  margin: 0.2rem;
+  cursor: pointer;
+}
+
+.nav-dropdown-list {
+  margin: 0;
+  padding: 0.5rem;
 }
 
 @media only screen and (max-width: 1024px) {

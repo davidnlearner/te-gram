@@ -2,24 +2,26 @@
 <template>
   <div id="comments">
     <p><i class="fas fa-comments"></i> {{ commentList.length }}</p>
-    <div
-      class="comment"
-      v-for="comment in commentList"
-      v-bind:key="comment.commentId"
-    >
-      <p>
-        <span class="username">{{ comment.username }} </span>:
-        {{ comment.message }}
-      </p>
-      <p>
-        <span id="time-since"> {{ timeSince(comment) }} </span>
-        <i
-          id="delete-comment-btn"
-          v-on:click="deleteComment(comment)"
-          class="far fa-times-circle"
-          v-if="comment.userId == userId"
-        ></i>
-      </p>
+    <div class="comment-wrapper">
+      <div
+        class="comment"
+        v-for="comment in commentList"
+        v-bind:key="comment.commentId"
+      >
+        <p>
+          <span class="username">{{ comment.username }}</span>
+          {{ comment.message }}
+        </p>
+        <p>
+          <span id="time-since"> {{ timeSince(comment) }} </span>
+          <i
+            id="delete-comment-btn"
+            v-on:click="deleteComment(comment)"
+            class="far fa-times-circle"
+            v-if="comment.userId == userId"
+          ></i>
+        </p>
+      </div>
     </div>
 
     <form
@@ -27,12 +29,11 @@
       autocomplete="off"
       v-on:submit.prevent="submitComment"
     >
-      <label for="comment-input">Comment:</label>
-      <input
-        type="text"
+      <textarea
         class="comment-input"
         name="comment-input"
         v-model="newComment"
+        placeholder="Add a comment..."
       />
       <input class="submit-btn" type="submit" value="Submit" />
     </form>
@@ -56,6 +57,7 @@ export default {
       const post = this.$store.state.posts.find(
         (post) => post.postId === this.postId
       );
+      console.log(this.postId);
       return post.comments;
     },
   },
@@ -134,16 +136,36 @@ export default {
 
 
 <style scoped>
+.comment-input,
+.comment p,
+.submit-btn {
+  font-size: 1rem;
+  font-family: "Spartan", "Arial", sans-serif;
+}
+
 .username {
   font-weight: bold;
 }
 
 .comment-form {
-  padding: 1rem;
+  padding: 1rem 0rem;
+  display: grid;
+  gap: 3px;
+  grid-template-columns: 7fr 1fr;
 }
-.comment-form #comment-input {
-  margin-left: 0.5rem;
-  margin-right: 2rem;
+.comment-form .comment-input {
+  margin: 0;
+  padding: 0.5rem;
+  resize: none;
+}
+
+.submit-btn {
+  height: 38px;
+}
+
+.comment-wrapper {
+  max-height: 10rem;
+  overflow-y: scroll;
 }
 
 .comment {

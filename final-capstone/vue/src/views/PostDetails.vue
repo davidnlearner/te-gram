@@ -1,14 +1,14 @@
 <template>
-  <div id="post-details">
-    <post id="post" :post="$store.state.post" />
+  <div id="post-details-page">
+    <post-detail :post="$store.state.post" />
   </div>
 </template>
 
 <script>
 import postService from "../services/PostService.js";
-import Post from "../components/Post.vue";
+import PostDetail from "../components/PostDetail.vue";
 export default {
-  name: "postDetails",
+  name: "postDetailsPage",
   created() {
     postService
       .getPost(this.$route.params.postId)
@@ -22,7 +22,7 @@ export default {
         console.log(error);
       });
   },
-  components: { Post },
+  components: { PostDetail },
 };
 </script>
 

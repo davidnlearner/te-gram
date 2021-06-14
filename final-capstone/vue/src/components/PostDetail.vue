@@ -1,5 +1,5 @@
 <template>
-  <div id="post">
+  <div id="post-detail">
     <h2 id="username" v-on:click="$router.push(`/profile/${post.username}`)">
       {{ post.username }}
     </h2>
@@ -78,12 +78,10 @@
     <div id="box-4-likes">
       <p>{{ post.likeNumber }} Likes</p>
     </div>
-    <p id="datetime">POSTED {{ timeSince }} AGO</p>
+    <p id="datetime">{{ timeSince }} ago</p>
 
     <div id="caption">
-      <p>
-        <strong> {{ post.username }}</strong> {{ post.caption }}
-      </p>
+      <p>{{ post.caption }}</p>
     </div>
 
     <comments
@@ -118,25 +116,25 @@ export default {
       var interval = seconds / 31536000;
 
       if (interval > 1) {
-        return Math.floor(interval) + " YEARS";
+        return Math.floor(interval) + " years";
       }
       interval = seconds / 2592000;
       if (interval > 1) {
-        return Math.floor(interval) + " MONTHS";
+        return Math.floor(interval) + " months";
       }
       interval = seconds / 86400;
       if (interval > 1) {
-        return Math.floor(interval) + " DAYS";
+        return Math.floor(interval) + " days";
       }
       interval = seconds / 3600;
       if (interval > 1) {
-        return Math.floor(interval) + " HOURS";
+        return Math.floor(interval) + " hours";
       }
       interval = seconds / 60;
       if (interval > 1) {
-        return Math.floor(interval) + " MINUTES";
+        return Math.floor(interval) + " minutes";
       }
-      return Math.floor(seconds) + " SECONDS";
+      return Math.floor(seconds) + " seconds";
     },
   },
   methods: {
@@ -189,48 +187,40 @@ export default {
 };
 </script>
 
-<style scoped>
-#post {
-  margin-top: 2rem;
-  padding: 1.4rem;
+<style>
+#post-detail {
+  margin: 2rem auto;
   grid-gap: 0.5rem;
-  width: 600px;
+  width: 800px;
   border-radius: 10px;
   background-color: rgb(241, 248, 243);
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 4fr 1fr 1fr;
   grid-template-areas:
-    "username . ."
-    "image image image"
-    "btns . favorite-btn"
-    "likes . ."
-    "caption caption caption"
-    "comments comments comments"
-    "datetime datetime .";
+    "image username ."
+    "image caption caption"
+    "image  comments comments"
+    "image comments comments"
+    "image btns favorite-btn"
+    "image likes ."
+    "image datetime ."
+    "image comment-form comment-form";
 }
 
-#post #username {
+#post-detail #username {
   font-size: 1.5rem;
   grid-area: username;
-  margin: 0;
+  margin: 1rem 0;
 }
 
 #datetime {
   grid-area: datetime;
-  font-weight: 300;
-  color: rgba(100, 100, 100, 1);
-  font-size: 0.75rem;
 }
 
 #caption {
   grid-area: caption;
-  padding: 0;
+  padding: 4px;
   margin: 0;
-}
-
-#caption p {
-  font-size: 1rem;
-  font-family: "Spartan", "Arial", sans-serif;
 }
 
 #image-slideshow {
@@ -241,6 +231,9 @@ export default {
 
 .slide-img {
   height: 400px;
+}
+
+.slide-img {
   max-height: 100%;
   max-width: 100%;
   margin-bottom: 10px;
@@ -249,13 +242,12 @@ export default {
 #button-box {
   grid-area: btns;
   display: flex;
-  justify-content: left;
-  margin-bottom: 0.5rem;
+  justify-content: space-evenly;
 }
 
 #favorite-btn {
   grid-area: favorite-btn;
-  justify-self: right;
+  justify-self: center;
   width: 2rem;
   font-size: 1.8rem;
 }
@@ -268,16 +260,12 @@ export default {
 
 #box-4-likes {
   grid-area: likes;
-  padding: 0;
+  padding: 4px;
 }
 
 #box-4-likes p,
 #caption p {
   margin: 0;
-}
-
-#box-4-likes p {
-  font-weight: bold;
 }
 
 #comments {
@@ -296,6 +284,5 @@ export default {
 button {
   border: 0;
   background-color: rgb(241, 248, 243);
-  cursor: pointer;
 }
 </style>

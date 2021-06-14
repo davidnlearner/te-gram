@@ -11,6 +11,7 @@
           v-bind:src="post.images[0]"
           v-on:click="$router.push(`/postDetails/${post.postId}`)"
         />
+        <!--<post-detail id="post-detail${post.id}" v-if="clicked"/>-->
       </li>
     </ul>
   </div>
@@ -70,6 +71,5 @@ ul {
   height: 250px;
   max-width: 300px;
   border-radius: 8px;
-
 }
 </style>
