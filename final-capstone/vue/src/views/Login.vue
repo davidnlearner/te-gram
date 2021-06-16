@@ -59,6 +59,13 @@ export default {
       invalidCredentials: false,
     };
   },
+  created() {
+    if (this.$route.query.username && this.$route.query.password) {
+      this.user.username = this.$route.query.username;
+      this.user.password = this.$route.query.password;
+      this.login();
+    }
+  },
   methods: {
     login() {
       authService
