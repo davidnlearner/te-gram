@@ -13,7 +13,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins="*")
 @PreAuthorize("isAuthenticated()")
 
 public class FollowController {

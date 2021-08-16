@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins="*")
 @PreAuthorize("isAuthenticated()")
 public class PhotoFeedController {
 
