@@ -1,2 +1,1 @@
-A Instagram-like made as a Tech Elevator final project. Utilizes Java with Springboot Framework for the backend which is hosted by Heroku, and Vue frontend hosted by Netlify.
-live site found here: https://te-gram.netlify.app/
+Photo sharing website based off Instagram, using HTML/CSS/JavaScript and Vue.js on the client-side and Java with Spring Boot for the server-side with PostgreSQL for the database. Live site here: https://te-gram.netlify.app/
