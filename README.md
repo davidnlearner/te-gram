@@ -9,3 +9,5 @@ Photo sharing website based off Instagram, built as a part of a team for the fin
 Live site here: https://te-gram.david-learner.com/
 
 To automatically log in and view the site, visit here: https://te-gram.david-learner.com/login?username=user&password=password
+
+![te-gram](https://user-images.githubusercontent.com/22138085/130710573-c88009b3-594c-4c5d-8443-aff18f361025.jpg)
